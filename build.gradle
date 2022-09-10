@@ -1,0 +1,48 @@
+plugins {
+    id 'fabric-loom' version '1.0-SNAPSHOT'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+tasks.withType(JavaCompile).configureEach {
+    it.sourceCompatibility = it.targetCompatibility = JavaVersion.toVersion(project.java_version)
+    it.options.release = Integer.valueOf(project.java_version)
+    it.options.encoding = 'UTF-8'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(project.java_version)
+    archivesBaseName = project.archives_base_name
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings_version}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    filteringCharset "UTF-8"
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+jar {
+    from("LICENSE.txt")
+    exclude('CREDITS.txt')
+    exclude('assets')
+    exclude('pack.mcmeta')
+}
+
+tasks.register('resourcepack', Zip) {
+    archiveFileName = "menumusic.zip"
+    destinationDirectory = layout.buildDirectory.dir('dist')
+    from(layout.buildDirectory.dir("resources/main")) {
+        excludes = ['fabric.mod.json', '*.mixins.json']
+    }
+}
+tasks.named("build") { finalizedBy("resourcepack") }

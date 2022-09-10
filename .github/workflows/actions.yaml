@@ -1,0 +1,37 @@
+name: '🧑‍🏭'
+on: [ push, pull_request ]
+jobs:
+  job:
+    runs-on: ubuntu-22.04
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          check-latest: true
+          cache: 'gradle'
+
+      - run: ./gradlew build --console plain --no-daemon --full-stacktrace
+
+      - uses: actions/create-release@v1
+        if: startsWith(github.event.ref, 'refs/tags/v')
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          body: 'automated release at commit ${{ github.sha }}'
+          draft: false
+          prerelease: false
+
+      - uses: csexton/release-asset-action@v2
+        if: startsWith(github.event.ref, 'refs/tags/v')
+        with:
+          file: "build/dist/menumusic.zip"
+          pattern: "build/libs/menumusic-*.jar"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          release-url: ${{ steps.create_release.outputs.upload_url }}

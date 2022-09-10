@@ -1,0 +1,22 @@
+# ignore all files
+*
+# but include directories
+!*/
+
+!/.gitattributes
+!/.gitignore
+!/.editorconfig
+
+!/src/**
+
+!/build.gradle
+!/gradle.properties
+!/settings.gradle
+!/gradle/wrapper/**
+!/gradlew
+!/gradlew.bat
+
+!/.github/**
+
+!/LICENSE.txt
+!/README.md
