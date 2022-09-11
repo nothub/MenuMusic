@@ -7,18 +7,17 @@ Change the title menu music without much fuzz!
 ## Usage
 
 1. Install the mod.
-2. Activate a resource pack that provides sound resources with `menumusic:music` identifier.
+2. Load a sound resource with `menumusic:music` identifier.
 3. Done, enjoy the music :)
 
-## Resource pack
+## Sound resources
+
+### Resource pack
 
 [example archive](https://github.com/nothub/menumusic/releases/latest/download/menumusic.zip)
 
-### Structure
-
-resourcepack.zip
-
 ```
+menumusic.zip
 ├── assets
 │   └── menumusic
 │       ├── sounds
@@ -28,7 +27,23 @@ resourcepack.zip
 └── pack.mcmeta
 ```
 
-sounds.json
+### KubeJS
+
+[loading assets](https://mods.latvian.dev/books/kubejs/page/loading-assets-and-data)
+
+```
+kubejs/
+└── assets
+    └── menumusic
+        ├── sounds
+        │   ├── track1.ogg
+        │   └── track2.ogg
+        └── sounds.json
+```
+
+### sounds.json
+
+[format description](https://minecraft.fandom.com/wiki/Sounds.json#File_structure)
 
 ```json
 {
