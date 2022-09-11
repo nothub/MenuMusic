@@ -38,8 +38,12 @@ jar {
     exclude('pack.mcmeta')
 }
 
+remapJar.archiveAppendix.set("${project.minecraft_version}")
+remapJar.archiveClassifier.set("fabric")
+
 tasks.register('resourcepack', Zip) {
-    archiveFileName = "menumusic.zip"
+    archiveAppendix = "${project.minecraft_version}"
+    archiveClassifier = "resourcepack"
     destinationDirectory = layout.buildDirectory.dir('dist')
     from(layout.buildDirectory.dir("resources/main")) {
         excludes = ['fabric.mod.json', '*.mixins.json']
