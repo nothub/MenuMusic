@@ -14,7 +14,7 @@ Change the title menu music without much fuzz!
 
 ### Resource pack
 
-[example archive](https://github.com/nothub/menumusic/releases/latest/download/menumusic.zip)
+[example packs](https://github.com/nothub/menumusic/releases)
 
 ```
 menumusic.zip
