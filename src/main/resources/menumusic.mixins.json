@@ -6,6 +6,7 @@
   "mixins": [
   ],
   "client": [
+    "accessors.AbstractSoundInstanceAccessor",
     "SoundManagerMixin"
   ],
   "injectors": {
