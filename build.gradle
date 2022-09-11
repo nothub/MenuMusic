@@ -40,6 +40,7 @@ jar {
 
 remapJar.archiveAppendix.set("${project.minecraft_version}")
 remapJar.archiveClassifier.set("fabric")
+remapJar.destinationDirectory.set(layout.buildDirectory.dir('dist'))
 
 tasks.register('resourcepack', Zip) {
     archiveAppendix = "${project.minecraft_version}"
