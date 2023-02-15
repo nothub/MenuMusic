@@ -6,16 +6,17 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.sound.SoundInstance;
+import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
 
 public class Mod implements ModInitializer {
     @Override
     public void onInitialize() {
         Identifier musicId = new Identifier("menumusic", "music");
-        SoundEvent musicEvent = new SoundEvent(musicId);
-        Registry.register(Registry.SOUND_EVENT, musicId, musicEvent);
+        SoundEvent musicEvent = SoundEvent.of(musicId);
+        Registry.register(Registries.SOUND_EVENT, musicId, musicEvent);
 
         SoundInstance music = PositionedSoundInstance.music(musicEvent);
         ((AbstractSoundInstanceAccessor) music).setRepeat(true);

@@ -13,11 +13,11 @@ import static net.minecraft.sound.SoundEvents.MUSIC_MENU;
 public class SoundManagerMixin {
     @Inject(at = @At("HEAD"), method = "play(Lnet/minecraft/client/sound/SoundInstance;)V", cancellable = true)
     private void injectPlayDirect(SoundInstance sound, CallbackInfo ci) {
-        if (sound.getId().equals(MUSIC_MENU.getId())) ci.cancel();
+        if (sound.getId().equals(MUSIC_MENU.registryKey().getValue())) ci.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "play(Lnet/minecraft/client/sound/SoundInstance;I)V", cancellable = true)
     private void injectPlayDelayed(SoundInstance sound, int delay, CallbackInfo ci) {
-        if (sound.getId().equals(MUSIC_MENU.getId())) ci.cancel();
+        if (sound.getId().equals(MUSIC_MENU.registryKey().getValue())) ci.cancel();
     }
 }
