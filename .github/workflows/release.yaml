@@ -1,0 +1,20 @@
+name: '🧑‍🏭'
+on: [ push ]
+jobs:
+  job:
+    if: startsWith(github.ref, 'refs/tags/v') == true
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: gradle/wrapper-validation-action@v1
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          check-latest: true
+          cache: 'gradle'
+      - run: ./gradlew --console plain --no-daemon --full-stacktrace build
+      - uses: softprops/action-gh-release@v1
+        with:
+          body: 'Built at commit: ${{ github.sha }}'
+          files: 'build/dist/*'
