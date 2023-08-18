@@ -16,7 +16,7 @@ jobs:
           check-latest: true
           cache: 'gradle'
 
-      - run: ./gradlew build --console plain --no-daemon --full-stacktrace
+      - run: ./gradlew --console plain --no-daemon --full-stacktrace test build
 
       - uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/v')
