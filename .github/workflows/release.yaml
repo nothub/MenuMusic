@@ -14,7 +14,7 @@ jobs:
           check-latest: true
           cache: 'gradle'
       - run: ./gradlew --console plain --no-daemon --full-stacktrace build
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
         with:
           body: 'Built at commit: ${{ github.sha }}'
           files: 'build/dist/*'
