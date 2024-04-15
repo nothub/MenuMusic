@@ -42,12 +42,12 @@ remapJar.archiveAppendix.set("${project.minecraft_version}")
 remapJar.archiveClassifier.set("fabric")
 remapJar.destinationDirectory.set(layout.buildDirectory.dir('dist'))
 
-tasks.register('resourcepack', Zip) {
+tasks.register('resourcePack', Zip) {
     archiveAppendix = "${project.minecraft_version}"
     archiveClassifier = "resourcepack"
-    destinationDirectory = layout.buildDirectory.dir('dist')
     from(layout.buildDirectory.dir("resources/main")) {
         excludes = ['fabric.mod.json', '*.mixins.json']
     }
+    destinationDirectory = layout.buildDirectory.dir('dist')
 }
-tasks.named("build") { finalizedBy("resourcepack") }
+tasks.named("build") { finalizedBy("resourcePack") }
