@@ -31,7 +31,7 @@ jobs:
       - uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/v')
         with:
-          name: '${{ github.ref }} (${{ env.MINECRAFT_VERSION }})'
+          name: '${{ github.ref_name }} (${{ env.MINECRAFT_VERSION }})'
           body: 'Release generated at commit: ${{ github.sha }}'
           files: 'build/dist/*.jar'
 
