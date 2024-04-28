@@ -36,3 +36,4 @@ jobs:
           files: 'build/dist/*.jar'
           loaders: 'fabric'
           game-versions: '>=1.20 <1.21'
+          dependencies: 'fabric@0.97.7+1.20.5(required){modrinth:P7dR8mSH}#(ignore:github)'
