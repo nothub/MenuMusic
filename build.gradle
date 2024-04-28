@@ -38,13 +38,15 @@ jar {
     exclude('pack.mcmeta')
 }
 
-remapJar.archiveAppendix.set("${project.minecraft_version}")
-remapJar.archiveClassifier.set("fabric")
+def artifactName(String type, String fileExt) {
+    return "${project.name.toLowerCase()}-${project.version}+${project.minecraft_version}-${type}.${fileExt}"
+}
+
+remapJar.archiveFileName.set(artifactName('fabric', 'jar'))
 remapJar.destinationDirectory.set(layout.buildDirectory.dir('dist'))
 
 tasks.register('resourcePack', Zip) {
-    archiveAppendix = "${project.minecraft_version}"
-    archiveClassifier = "resourcepack"
+    archiveFileName = artifactName('resourcepack', 'zip')
     from(layout.buildDirectory.dir("resources/main")) {
         excludes = ['fabric.mod.json', '*.mixins.json']
     }
