@@ -40,6 +40,8 @@ jobs:
         with:
           modrinth-id: 'To1L7Q0X'
           modrinth-token: '${{ secrets.MODRINTH_TOKEN }}'
+          modrinth-featured: true
+          modrinth-unfeature-mode: any
           files: 'build/dist/*'
           loaders: 'fabric'
           game-versions: '${{ env.MINECRAFT_VERSION }}'
