@@ -14,7 +14,7 @@ import net.minecraft.registry.Registry;
 public class Mod implements ModInitializer {
     @Override
     public void onInitialize() {
-        Identifier musicId = new Identifier("menumusic", "music");
+        Identifier musicId = Identifier.of("menumusic", "music");
         SoundEvent musicEvent = SoundEvent.of(musicId);
         Registry.register(Registries.SOUND_EVENT, musicId, musicEvent);
 
