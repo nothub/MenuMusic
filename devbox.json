@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.12.0/.schema/devbox.schema.json",
+  "packages": [
+    "temurin-bin-21@latest"
+  ],
+  "shell": {
+    "scripts": {
+      "build": [
+        "./gradlew --console plain --no-daemon --full-stacktrace build"
+      ],
+      "check": [
+        "./gradlew --console plain --no-daemon --full-stacktrace check"
+      ]
+    }
+  }
+}
