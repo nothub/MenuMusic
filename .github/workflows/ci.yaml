@@ -24,11 +24,11 @@ jobs:
 
       - name: 'Find Minecraft version'
         if: startsWith(github.ref, 'refs/tags/v')
-        run: echo "MINECRAFT_VERSION=$(cat gradle.properties | grep -oP 'minecraft_version=(\K[0-9\.]+)')" >> $GITHUB_ENV
+        run: echo "MINECRAFT_VERSION=$(cat gradle.properties | grep -oP '^minecraft_version=(\K[0-9\.]+)')" >> $GITHUB_ENV
 
       - name: 'Find Fabric API version'
         if: startsWith(github.ref, 'refs/tags/v')
-        run: echo "FABRIC_API_VERSION=$(cat gradle.properties | grep -oP 'fabric_api_version=(\K[0-9\.]+)')" >> $GITHUB_ENV
+        run: echo "FABRIC_API_VERSION=$(cat gradle.properties | grep -oP '^fabric_api_version=(\K[0-9\.]+)')" >> $GITHUB_ENV
 
       - uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/v')
