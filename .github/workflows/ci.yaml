@@ -44,6 +44,8 @@ jobs:
           modrinth-token: '${{ secrets.MODRINTH_TOKEN }}'
           modrinth-featured: true
           modrinth-unfeature-mode: any
+          curseforge-id: '1113116'
+          curseforge-token: '${{ secrets.CURSEFORGE_TOKEN }}'
           files: 'build/dist/*'
           loaders: 'fabric'
           game-versions: '${{ env.MINECRAFT_VERSION }}'
