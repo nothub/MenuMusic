@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "menumusic",
-  "version": "${version}",
+  "version": "@mod_version@",
   "name": "Menu Music",
   "description": "Replace main menu music",
   "authors": [
@@ -24,8 +24,8 @@
     "menumusic.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.16.9",
-    "fabric": "*",
-    "minecraft": "1.21.4"
+    "minecraft": "@minecraft_version@",
+    "fabricloader": ">=@fabric_loader_version@",
+    "fabric": ">=@fabric_api_version@"
   }
 }
