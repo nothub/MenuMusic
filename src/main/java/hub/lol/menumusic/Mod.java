@@ -18,7 +18,7 @@ public class Mod implements ModInitializer {
         SoundEvent musicEvent = SoundEvent.of(musicId);
         Registry.register(Registries.SOUND_EVENT, musicId, musicEvent);
 
-        SoundInstance music = PositionedSoundInstance.music(musicEvent);
+        SoundInstance music = PositionedSoundInstance.music(musicEvent, 1.0F);
         ((AbstractSoundInstanceAccessor) music).setRepeat(true);
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
