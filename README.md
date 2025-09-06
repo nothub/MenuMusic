@@ -49,7 +49,7 @@ kubejs/
 
 ### sounds.json
 
-[format description](https://minecraft.fandom.com/wiki/Sounds.json#File_structure)
+[format description](https://minecraft.wiki/w/Sounds.json#File_structure)
 
 ```json
 {
