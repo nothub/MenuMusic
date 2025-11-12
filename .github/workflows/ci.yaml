@@ -33,6 +33,7 @@ jobs:
         with:
           name: '${{ github.ref_name }} (${{ env.MINECRAFT_VERSION }})'
           body: 'Release generated at commit: ${{ github.sha }}'
+          generate_release_notes: true
           files: 'build/dist/*'
 
       - uses: Kir-Antipov/mc-publish@v3
