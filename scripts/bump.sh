@@ -54,7 +54,7 @@ fi
 if ! git diff --quiet || ! git diff --quiet --staged; then
 
     mod_version_old="$(cat gradle.properties | grep -E 'mod_version=.+' | cut -d = -f 2)"
-    if echo "${changes[@]}" | grep -Fq Minecraft; then
+    if echo "${changes[@]}" | grep -Fq "Minecraft"; then
         mod_version_new="$(echo "${mod_version_old}" | awk -F. '{printf "%d.%d.0", $1, $2+1}')"
     else
         mod_version_new="$(echo "${mod_version_old}" | awk -F. '{printf "%d.%d.%d", $1, $2, $3+1}')"
@@ -63,7 +63,9 @@ if ! git diff --quiet || ! git diff --quiet --staged; then
 
     git add .
     git --no-pager diff --staged
-    read -rp "Press enter to COMMIT and PUBLISH these changes above as: v${mod_version_new}"
+
+    printf "\n"
+    read -rp "Press enter to COMMIT and PUBLISH the above changes as: v${mod_version_new}"
 
     git commit -m "v${mod_version_new}" -m "$(printf '%s\n' "${changes[@]}")"
     git push
