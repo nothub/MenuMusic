@@ -28,3 +28,13 @@ sed -i "s/^fabric_api_version=.*$/fabric_api_version=${fabric_api_version}/" gra
 ./gradlew clean
 ./gradlew migrateMappings --mappings "${yarn_mappings_version}"
 ./gradlew build --refresh-dependencies
+
+if test -n "$(git status -s > /dev/null)"; then
+    mod_version_old="$(cat gradle.properties | grep -E 'mod_version=.+' | cut -d = -f 2)"
+    mod_version_new=$(echo "${mod_version_old}" | awk -F. '{printf "%d.%d.0", $1, $2+1}')
+    git add .
+    git commit -m "v${mod_version_new}"
+    git push
+    git tag "v${mod_version_new}"
+    git push origin tag "v${mod_version_new}"
+fi

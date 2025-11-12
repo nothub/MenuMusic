@@ -14,8 +14,8 @@
       "check": [
         "./gradlew --console plain --no-daemon --full-stacktrace check"
       ],
-      "auto-bump": [
-        "./scripts/auto-bump.sh"
+      "bump": [
+        "./scripts/bump.sh"
       ]
     }
   }
