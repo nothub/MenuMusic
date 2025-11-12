@@ -55,3 +55,8 @@ tasks.register('resourcePack', Zip) {
     destinationDirectory = layout.buildDirectory.dir('dist')
 }
 tasks.named("build") { finalizedBy("resourcePack") }
+
+clean {
+    delete "${rootDir}/remappedSrc"
+    delete "${rootDir}/run"
+}
