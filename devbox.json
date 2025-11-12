@@ -1,6 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.12.0/.schema/devbox.schema.json",
   "packages": [
+    "bash@latest",
+    "curl@latest",
+    "jq@latest",
     "temurin-bin-21@latest"
   ],
   "shell": {
@@ -10,6 +13,9 @@
       ],
       "check": [
         "./gradlew --console plain --no-daemon --full-stacktrace check"
+      ],
+      "auto-bump": [
+        "./scripts/auto-bump.sh"
       ]
     }
   }
