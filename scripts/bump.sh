@@ -30,9 +30,15 @@ sed -i "s/^fabric_api_version=.*$/fabric_api_version=${fabric_api_version}/" gra
 ./gradlew build --refresh-dependencies
 
 if test -n "$(git status -s > /dev/null)"; then
+
     mod_version_old="$(cat gradle.properties | grep -E 'mod_version=.+' | cut -d = -f 2)"
     mod_version_new=$(echo "${mod_version_old}" | awk -F. '{printf "%d.%d.0", $1, $2+1}')
+    sed -i "s/^mod_version=.*$/mod_version=${mod_version_new}/" gradle.properties
+
     git add .
+    git --no-pager diff --staged
+    read -rp "Press enter to COMMIT and PUBLISH these changes above as: v${mod_version_new}"
+
     git commit -m "v${mod_version_new}"
     git push
     git tag "v${mod_version_new}"
