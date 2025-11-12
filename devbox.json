@@ -8,15 +8,9 @@
   ],
   "shell": {
     "scripts": {
-      "build": [
-        "./gradlew --console plain --no-daemon --full-stacktrace build"
-      ],
-      "check": [
-        "./gradlew --console plain --no-daemon --full-stacktrace check"
-      ],
-      "bump": [
-        "./scripts/bump.sh"
-      ]
+      "check": "./gradlew --console plain --no-daemon --full-stacktrace check",
+      "build": "./gradlew --console plain --no-daemon --full-stacktrace build",
+      "bump":  "./scripts/bump.sh"
     }
   }
 }
