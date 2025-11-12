@@ -3,6 +3,7 @@
   "packages": [
     "bash@latest",
     "curl@latest",
+    "git@latest",
     "jq@latest",
     "temurin-bin-21@latest"
   ],
