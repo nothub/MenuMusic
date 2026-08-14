@@ -22,7 +22,7 @@ public class Mod implements ModInitializer {
         ((AbstractSoundInstanceAccessor) music).setRepeat(true);
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (!(client.screen instanceof TitleScreen)) return;
+            if (!(client.gui.screen() instanceof TitleScreen)) return;
             if (client.getSoundManager().isActive(music)) return;
             client.getSoundManager().play(music);
         });
