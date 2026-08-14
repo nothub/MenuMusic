@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.13-SNAPSHOT'
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
 }
 
 version = project.mod_version
@@ -13,23 +13,30 @@ tasks.withType(JavaCompile).configureEach {
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(project.java_version)
-    archivesBaseName = project.archives_base_name
+}
+
+base {
+    archivesName = project.archives_base_name
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings_version}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    implementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 
+def modVersion = project.version
+def mcVersion = project.minecraft_version
+def loaderVersion = project.fabric_loader_version
+def apiVersion = project.fabric_api_version
+
 processResources {
-    filteringCharset "UTF-8"
+    filteringCharset = "UTF-8"
     filesMatching("fabric.mod.json") {
-        filter { line -> line.replace("@mod_version@", project.version) }
-        filter { line -> line.replace("@minecraft_version@", minecraft_version) }
-        filter { line -> line.replace("@fabric_loader_version@", fabric_loader_version) }
-        filter { line -> line.replace("@fabric_api_version@", fabric_api_version) }
+        filter { line -> line.replace("@mod_version@", modVersion) }
+        filter { line -> line.replace("@minecraft_version@", mcVersion) }
+        filter { line -> line.replace("@fabric_loader_version@", loaderVersion) }
+        filter { line -> line.replace("@fabric_api_version@", apiVersion) }
     }
 }
 
@@ -44,8 +51,8 @@ def artifactName(String type, String fileExt) {
     return "${project.name.toLowerCase()}-${project.version}+${project.minecraft_version}-${type}.${fileExt}"
 }
 
-remapJar.archiveFileName.set(artifactName('fabric', 'jar'))
-remapJar.destinationDirectory.set(layout.buildDirectory.dir('dist'))
+jar.archiveFileName.set(artifactName('fabric', 'jar'))
+jar.destinationDirectory.set(layout.buildDirectory.dir('dist'))
 
 tasks.register('resourcePack', Zip) {
     archiveFileName = artifactName('resourcepack', 'zip')
