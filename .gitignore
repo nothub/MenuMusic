@@ -1,6 +1,4 @@
-/.devbox/
-/devbox.lock
 /.gradle/
-/build/
+build/
 /remappedSrc/
-/run/
+run/

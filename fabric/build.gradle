@@ -1,0 +1,84 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+version = mod_version
+group = mod_group_id
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(java_version.toInteger())
+
+base {
+    archivesName = mod_id
+}
+
+// Not a Gradle module -- plain .java files each loader compiles on its own
+// classpath, so code shared between loaders that still touches Minecraft
+// classes doesn't need its own Minecraft dependency wired up.
+sourceSets.main.java.srcDir "${rootDir}/shared/src/main/java"
+
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+}
+
+processResources {
+    filteringCharset = "UTF-8"
+
+    // Captured as local vars (rather than read from inside the filter
+    // closures) so the closures don't hold a live reference to the script
+    // object -- that reference can't be restored from the configuration cache.
+    def modId = project.mod_id
+    def modName = project.mod_name
+    def modVer = project.mod_version
+    def modLicense = project.mod_license
+    def modAuthors = project.mod_authors
+    def modDescription = project.mod_description
+    def mcVersion = project.minecraft_version
+    def loaderVersion = project.fabric_loader_version
+    def apiVersion = project.fabric_api_version
+
+    filesMatching("fabric.mod.json") {
+        filter { line -> line.replace("@mod_id@", modId) }
+        filter { line -> line.replace("@mod_name@", modName) }
+        filter { line -> line.replace("@mod_version@", modVer) }
+        filter { line -> line.replace("@mod_license@", modLicense) }
+        filter { line -> line.replace("@mod_authors@", modAuthors) }
+        filter { line -> line.replace("@mod_description@", modDescription) }
+        filter { line -> line.replace("@minecraft_version@", mcVersion) }
+        filter { line -> line.replace("@fabric_loader_version@", loaderVersion) }
+        filter { line -> line.replace("@fabric_api_version@", apiVersion) }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+def artifactName(String type, String fileExt) {
+    return "${rootProject.name}-${project.version}+${project.minecraft_version}-${type}.${fileExt}"
+}
+
+jar {
+    from("${rootDir}/LICENSE.txt")
+    exclude('CREDITS.txt')
+    exclude('assets')
+    exclude('pack.mcmeta')
+}
+
+jar.archiveFileName.set(artifactName('fabric', 'jar'))
+jar.destinationDirectory.set(rootProject.layout.buildDirectory.dir('dist'))
+
+tasks.register('resourcePack', Zip) {
+    archiveFileName = artifactName('resourcepack', 'zip')
+    from(layout.buildDirectory.dir("resources/main")) {
+        excludes = ['fabric.mod.json', '*.mixins.json']
+    }
+    destinationDirectory = rootProject.layout.buildDirectory.dir('dist')
+}
+tasks.named("build") { finalizedBy("resourcePack") }
+
+clean {
+    delete "${rootDir}/remappedSrc"
+    delete "${projectDir}/run"
+}

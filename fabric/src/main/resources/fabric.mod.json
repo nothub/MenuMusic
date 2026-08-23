@@ -1,23 +1,21 @@
 {
   "schemaVersion": 1,
-  "id": "menumusic",
+  "id": "@mod_id@",
   "version": "@mod_version@",
-  "name": "Menu Music",
-  "description": "Replace main menu music",
+  "name": "@mod_name@",
+  "description": "@mod_description@",
   "authors": [
-    "hub"
+    "@mod_authors@"
   ],
   "contact": {
     "homepage": "https://github.com/nothub/menumusic"
   },
-  "license": "MIT",
+  "license": "@mod_license@",
   "icon": "icon.png",
   "environment": "client",
   "entrypoints": {
-    "client": [
-    ],
     "main": [
-      "hub.lol.menumusic.Mod"
+      "hub.lol.menumusic.fabric.Main"
     ]
   },
   "mixins": [
