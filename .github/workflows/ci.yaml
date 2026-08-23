@@ -4,16 +4,21 @@ permissions:
   contents: write
 jobs:
   ci:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
 
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
+      - uses: gradle/actions/wrapper-validation@v4
+
+      - name: 'Find Java version'
+        run: echo "JAVA_VERSION=$(cat gradle.properties | grep -oP '^java_version=(\K[0-9]+)')" >> $GITHUB_ENV
+
       - uses: actions/setup-java@v5
         with:
-          java-version: '25'
+          java-version: ${{ env.JAVA_VERSION }}
           distribution: 'temurin'
           check-latest: true
           cache: 'gradle'
@@ -24,9 +29,13 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')
         run: echo "MINECRAFT_VERSION=$(cat gradle.properties | grep -oP '^minecraft_version=(\K[0-9\.]+)')" >> $GITHUB_ENV
 
+      - name: 'Find mod version'
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: echo "MOD_VERSION=$(cat gradle.properties | grep -oP '^mod_version=(\K.+)')" >> $GITHUB_ENV
+
       - name: 'Find Fabric API version'
         if: startsWith(github.ref, 'refs/tags/v')
-        run: echo "FABRIC_API_VERSION=$(cat gradle.properties | grep -oP '^fabric_api_version=(\K[0-9\.]+)')" >> $GITHUB_ENV
+        run: echo "FABRIC_API_VERSION=$(cat fabric/gradle.properties | grep -oP '^fabric_api_version=(\K[0-9\.]+)')" >> $GITHUB_ENV
 
       - uses: softprops/action-gh-release@v3
         if: startsWith(github.ref, 'refs/tags/v')
@@ -45,7 +54,22 @@ jobs:
           modrinth-unfeature-mode: any
           curseforge-id: '1113116'
           curseforge-token: '${{ secrets.CURSEFORGE_TOKEN }}'
-          files: 'build/dist/*'
+          version: '${{ env.MOD_VERSION }}'
+          files: 'build/dist/*-fabric.jar'
           loaders: 'fabric'
           game-versions: '${{ env.MINECRAFT_VERSION }}'
           dependencies: 'fabric@${{ env.FABRIC_API_VERSION }}(required){modrinth:P7dR8mSH}'
+
+      - uses: Kir-Antipov/mc-publish@v3
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          modrinth-id: 'To1L7Q0X'
+          modrinth-token: '${{ secrets.MODRINTH_TOKEN }}'
+          modrinth-featured: true
+          modrinth-unfeature-mode: any
+          curseforge-id: '1113116'
+          curseforge-token: '${{ secrets.CURSEFORGE_TOKEN }}'
+          version: '${{ env.MOD_VERSION }}'
+          files: 'build/dist/*-neoforge.jar'
+          loaders: 'neoforge'
+          game-versions: '${{ env.MINECRAFT_VERSION }}'
