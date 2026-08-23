@@ -55,7 +55,9 @@ jobs:
           curseforge-id: '1113116'
           curseforge-token: '${{ secrets.CURSEFORGE_TOKEN }}'
           version: '${{ env.MOD_VERSION }}'
-          files: 'build/dist/*-fabric.jar'
+          files: |
+            build/dist/*-fabric.jar
+            build/dist/*-resourcepack.zip
           loaders: 'fabric'
           game-versions: '${{ env.MINECRAFT_VERSION }}'
           dependencies: 'fabric@${{ env.FABRIC_API_VERSION }}(required){modrinth:P7dR8mSH}'
@@ -70,6 +72,8 @@ jobs:
           curseforge-id: '1113116'
           curseforge-token: '${{ secrets.CURSEFORGE_TOKEN }}'
           version: '${{ env.MOD_VERSION }}'
-          files: 'build/dist/*-neoforge.jar'
+          files: |
+            build/dist/*-neoforge.jar
+            build/dist/*-resourcepack.zip
           loaders: 'neoforge'
           game-versions: '${{ env.MINECRAFT_VERSION }}'
