@@ -2,13 +2,11 @@
 
 Change the title menu music without much fuzz!
 
----
-
-## Download
-
 [Modrinth](https://modrinth.com/mod/menumusic)  
 [CurseForge](https://www.curseforge.com/minecraft/mc-mods/menumusic)  
 [GitHub](https://github.com/nothub/menumusic/releases)
+
+---
 
 ## Usage
 
