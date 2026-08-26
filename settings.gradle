@@ -8,10 +8,6 @@ pluginManagement {
     }
 }
 
-plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version "${foojay_resolver_version}"
-}
-
 rootProject.name = 'menumusic'
 
 include 'fabric', 'neoforge'
