@@ -11,7 +11,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: gradle/actions/wrapper-validation@v4
+      - uses: gradle/actions/wrapper-validation@v5
 
       - name: 'Find Java version'
         run: echo "JAVA_VERSION=$(cat gradle.properties | grep -oP '^java_version=(\K[0-9]+)')" >> $GITHUB_ENV
