@@ -1,6 +1,6 @@
 # Menu Music
 
-Change the title menu music without much fuzz!
+Fabric & NeoForge mod. Change the title menu music without much fuzz!
 
 [Modrinth](https://modrinth.com/mod/menumusic)  
 [CurseForge](https://www.curseforge.com/minecraft/mc-mods/menumusic)  
