@@ -11,7 +11,7 @@
     "homepage": "https://github.com/nothub/menumusic"
   },
   "license": "@mod_license@",
-  "icon": "icon.png",
+  "icon": "logo.png",
   "environment": "client",
   "entrypoints": {
     "main": [
