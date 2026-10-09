@@ -38,6 +38,8 @@ processResources {
     def loaderVersion = project.fabric_loader_version
     def apiVersion = project.fabric_api_version
 
+    inputs.properties(modId: modId, modName: modName, modVer: modVer, modLicense: modLicense, modAuthors: modAuthors, modDescription: modDescription, mcVersion: mcVersion, loaderVersion: loaderVersion, apiVersion: apiVersion)
+
     filesMatching("fabric.mod.json") {
         filter { line -> line.replace("@mod_id@", modId) }
         filter { line -> line.replace("@mod_name@", modName) }
