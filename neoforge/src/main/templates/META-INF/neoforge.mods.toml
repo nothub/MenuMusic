@@ -1,5 +1,4 @@
 modLoader="javafml"
-loaderVersion="${loader_version_range}"
 license="${mod_license}"
 issueTrackerURL="https://github.com/nothub/menumusic/issues"
 
@@ -18,7 +17,7 @@ config="menumusic.mixins.json"
 [[dependencies.${mod_id}]]
     modId="neoforge"
     type="required"
-    versionRange="${neo_version_range}"
+    versionRange="[${neo_version},)"
     ordering="AFTER"
     side="CLIENT"
 
