@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "configMigration": true,
+  "minimumReleaseAge": "7 days",
+  "semanticCommits": "enabled",
+  "timezone": "Europe/Berlin",
+  "assignees": [
+    "nothub"
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "github-tags"
+      ],
+      "matchDepNames": [
+        "nothub/**"
+      ],
+      "minimumReleaseAge": "0 days"
+    },
+    {
+      "description": "Bumped via scripts/versions.sh, together with the MC version",
+      "matchDepNames": [
+        "com.mojang:minecraft",
+        "io.papermc.paper:paper-api",
+        "io.papermc.paper:dev-bundle",
+        "net.fabricmc:fabric-loader",
+        "net.fabricmc.fabric-api:fabric-api",
+        "net.fabricmc.fabric-loom",
+        "net.neoforged:neoforge",
+        "net.neoforged.moddev"
+      ],
+      "enabled": false
+    }
+  ]
+}
