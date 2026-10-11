@@ -18,7 +18,7 @@
       "minimumReleaseAge": "0 days"
     },
     {
-      "description": "Bumped via scripts/versions.sh, together with the MC version",
+      "description": "Bumped centrally, in sync with MC version",
       "matchDepNames": [
         "com.mojang:minecraft",
         "io.papermc.paper:paper-api",
