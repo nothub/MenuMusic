@@ -9,15 +9,6 @@
   ],
   "packageRules": [
     {
-      "matchDatasources": [
-        "github-tags"
-      ],
-      "matchDepNames": [
-        "nothub/**"
-      ],
-      "minimumReleaseAge": "0 days"
-    },
-    {
       "description": "Bumped centrally, in sync with MC version",
       "matchDepNames": [
         "com.mojang:minecraft",
