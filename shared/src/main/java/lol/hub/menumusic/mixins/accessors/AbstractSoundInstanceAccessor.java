@@ -1,4 +1,4 @@
-package hub.lol.menumusic.mixins.accessors;
+package lol.hub.menumusic.mixins.accessors;
 
 import net.minecraft.client.resources.sounds.AbstractSoundInstance;
 import org.spongepowered.asm.mixin.Mixin;

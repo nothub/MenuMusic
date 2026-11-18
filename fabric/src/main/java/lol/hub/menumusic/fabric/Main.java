@@ -1,6 +1,6 @@
-package hub.lol.menumusic.fabric;
+package lol.hub.menumusic.fabric;
 
-import hub.lol.menumusic.MenuMusicCore;
+import lol.hub.menumusic.MenuMusicCore;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 

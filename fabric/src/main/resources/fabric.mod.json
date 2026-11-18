@@ -8,14 +8,15 @@
     "@mod_authors@"
   ],
   "contact": {
-    "homepage": "https://github.com/nothub/menumusic"
+    "homepage": "https://github.com/nothub/menumusic",
+    "issues": "https://github.com/nothub/menumusic/issues"
   },
   "license": "@mod_license@",
   "icon": "logo.png",
   "environment": "client",
   "entrypoints": {
     "main": [
-      "hub.lol.menumusic.fabric.Main"
+      "lol.hub.menumusic.fabric.Main"
     ]
   },
   "mixins": [

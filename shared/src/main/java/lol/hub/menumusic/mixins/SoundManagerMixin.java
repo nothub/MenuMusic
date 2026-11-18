@@ -1,4 +1,4 @@
-package hub.lol.menumusic.mixins;
+package lol.hub.menumusic.mixins;
 
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

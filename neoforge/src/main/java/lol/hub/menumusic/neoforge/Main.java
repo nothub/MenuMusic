@@ -1,6 +1,6 @@
-package hub.lol.menumusic.neoforge;
+package lol.hub.menumusic.neoforge;
 
-import hub.lol.menumusic.MenuMusicCore;
+import lol.hub.menumusic.MenuMusicCore;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;

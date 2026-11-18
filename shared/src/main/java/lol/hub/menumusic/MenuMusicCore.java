@@ -1,6 +1,6 @@
-package hub.lol.menumusic;
+package lol.hub.menumusic;
 
-import hub.lol.menumusic.mixins.accessors.AbstractSoundInstanceAccessor;
+import lol.hub.menumusic.mixins.accessors.AbstractSoundInstanceAccessor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
