@@ -15,7 +15,7 @@
   "icon": "logo.png",
   "environment": "client",
   "entrypoints": {
-    "main": [
+    "client": [
       "lol.hub.menumusic.fabric.Main"
     ]
   },
