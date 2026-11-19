@@ -81,6 +81,5 @@ tasks.register('resourcePack', Zip) {
 tasks.named("build") { finalizedBy("resourcePack") }
 
 clean {
-    delete "${rootDir}/remappedSrc"
     delete "${projectDir}/run"
 }
