@@ -2,9 +2,9 @@
 
 Fabric & NeoForge mod. Change the title menu music without much fuzz!
 
-[![GitHub](https://img.shields.io/github/stars/nothub/menumusic)](https://github.com/nothub/menumusic)
-[![Modrinth](https://img.shields.io/modrinth/dt/To1L7Q0X?label=Modrinth)](https://modrinth.com/mod/menumusic)
-[![CurseForge](https://img.shields.io/curseforge/dt/1113116?label=CurseForge)](https://www.curseforge.com/minecraft/mc-mods/menumusic)
+[![GitHub](https://img.shields.io/github/stars/nothub/menumusic?style=flat&label=GitHub&logo=github&color=181717)](https://github.com/nothub/menumusic)
+[![Modrinth](https://img.shields.io/modrinth/dt/To1L7Q0X?style=flat&label=Modrinth&logo=modrinth&color=1bd96a)](https://modrinth.com/mod/menumusic)
+[![CurseForge](https://img.shields.io/curseforge/dt/1113116?style=flat&label=CurseForge&logo=curseforge&color=f16436)](https://www.curseforge.com/minecraft/mc-mods/menumusic)
 
 ---
 
