@@ -1,6 +1,6 @@
 # Menu Music
 
-Fabric & NeoForge mod. Change the title menu music without much fuzz!
+Fabric & NeoForge mod. Change the title menu music without much fuss!
 
 [![GitHub](https://img.shields.io/github/downloads/nothub/menumusic/total?style=flat&label=GitHub&logo=github&color=181717)](https://github.com/nothub/menumusic/releases)
 [![Modrinth](https://img.shields.io/modrinth/dt/To1L7Q0X?style=flat&label=Modrinth&logo=modrinth&color=1bd96a)](https://modrinth.com/mod/menumusic)
